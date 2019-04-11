@@ -1,53 +1,45 @@
 <?php
+namespace BST;
 
-class Node {
-    public $root;
-    public $left;
-    public $right;
+include_once 'Node.php';
 
-    public function __construct($key) {
-         $this->root = $key;
-         $this->left = NULL;
-         $this->right = NULL;
-    }
-
-    public function __toString() {
-        echo sprintf ("%s</br>", $this->root);
-        if ($this->left && $this->right) {
-            echo "/\\</br>";
-            echo $this->left->__toString();
-            echo $this->right->__toString();
-        }
-        return;
-    }
-}
-
-class BST {
+class BST
+{
     public $root;
 
-    public function  __construct() {
-        $this->root = NULL;
+    public function __construct()
+    {
+        $this->root = null;
     }
 
-    public function insert($key) {
-        if ($this->root === NULL) {
-            $this->root = new Node($key);
+    public function insert($data)
+    {
+        $node = new Node($data);
 
-            return $this;
-        }
-
-        $current = $this->root;
-
-        if ($key < $current->root) {
-            $current->left = new Node($key);
+        if ($this->root === null) {
+            $this->root = $node;
         } else {
-            $current->right = new Node($key);
+            $this->insertNode($this->root, $node);
         }
 
         return $this;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->root->__toString();
+    }
+
+    private function insertNode(&$root, $node)
+    {
+        if ($root === null) {
+            $root = $node;
+        } else {
+            if ($node->data > $root->data) {
+                $this->insertNode($root->right, $node);
+            } else if ($node->data < $root->data) {
+                $this->insertNode($root->left, $node);
+            }
+        }
     }
 }
