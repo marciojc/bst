@@ -3,7 +3,7 @@ namespace BST;
 
 include_once 'Node.php';
 
-class BST
+class Bst
 {
     public $root;
 
