@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/composer
-# Edit at https://www.gitignore.io/?templates=composer
+# Created by https://www.gitignore.io/api/macos,composer
+# Edit at https://www.gitignore.io/?templates=macos,composer
 
 ### Composer ###
 composer.phar
@@ -10,4 +10,34 @@ composer.phar
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
 
-# End of https://www.gitignore.io/api/composer
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# End of https://www.gitignore.io/api/macos,composer
+
+.phpunit.result.cache
