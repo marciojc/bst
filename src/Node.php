@@ -1,5 +1,5 @@
 <?php
-namespace BST;
+namespace Bst;
 
 class Node
 {

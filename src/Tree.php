@@ -1,9 +1,7 @@
 <?php
-namespace BST;
+namespace Bst;
 
-include_once 'Node.php';
-
-class Bst
+class Tree
 {
     public $root;
 

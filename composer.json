@@ -1,4 +1,5 @@
 {
+    "name": "marciojc/bst",
     "autoload": {
         "classmap": [
             "src/"
