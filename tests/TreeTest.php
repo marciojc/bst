@@ -33,5 +33,21 @@ final class TreeTest extends TestCase
         $tree->insert(3);
         $this->assertEquals($tree->root->left->data, 3);
     }
+
+    public function testHasRightNode(): void
+    {
+        $tree = new Bst\Tree();
+        $tree->insert(5);
+        $tree->insert(7);
+        $this->assertEquals(get_class($tree->root->right), 'Bst\Node');
+    }
+
+    public function testTreeRightNode(): void
+    {
+        $tree = new Bst\Tree();
+        $tree->insert(5);
+        $tree->insert(7);
+        $this->assertEquals($tree->root->right->data, 7);
+    }
 }
 
