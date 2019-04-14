@@ -49,5 +49,15 @@ final class TreeTest extends TestCase
         $tree->insert(7);
         $this->assertEquals($tree->root->right->data, 7);
     }
+
+    public function testTreeInorderTraverse(): void
+    {
+        $tree = new Bst\Tree();
+        $tree->insert(5);
+        $tree->insert(3);
+        $tree->insert(7);
+        $this->expectOutputString('3 5 7');
+        $tree->traverse();
+    }
 }
 
