@@ -40,4 +40,22 @@ class Tree
             }
         }
     }
+
+    public function traverse() : void {
+        $this->inorder($this->root);
+    }
+
+    private function inorder($node) : void {
+        if($node->left) {
+            $this->inorder($node->left);
+            echo " ";
+        }
+
+        echo $node;
+
+        if($node->right) {
+            echo " ";
+            $this->inorder($node->right);
+        }
+    }
 }
