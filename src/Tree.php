@@ -72,4 +72,18 @@ class Tree
             $this->inorder($node->right);
         }
     }
+
+    private function postorder($node) : void {
+        if($node->left) {
+            $this->inorder($node->left);
+            echo " ";
+        }
+
+        if($node->right) {
+            echo " ";
+            $this->inorder($node->right);
+        }
+
+        echo $node;
+    }
 }
