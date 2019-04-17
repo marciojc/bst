@@ -41,8 +41,22 @@ class Tree
         }
     }
 
-    public function traverse() : void {
-        $this->inorder($this->root);
+    public function traverse($method = 'inorder') : void {
+        switch($method) {
+             case 'inorder':
+                 $this->inorder($this->root);
+                 break;
+             case 'postorder':
+                 $this->postorder($this->root);
+                 break;
+
+             case 'preorder':
+                 $this->preorder($this->root);
+                 break;
+
+             default:
+             break;
+        }
     }
 
     private function inorder($node) : void {
@@ -60,11 +74,10 @@ class Tree
     }
 
     private function preorder($node) : void {
-        echo $node;
+        echo $node . " ";
 
         if($node->left) {
             $this->inorder($node->left);
-            echo " ";
         }
 
         if($node->right) {
