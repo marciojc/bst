@@ -93,8 +93,8 @@ class Tree
         }
 
         if($node->right) {
-            echo " ";
             $this->inorder($node->right);
+            echo " ";
         }
 
         echo $node;

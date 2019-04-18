@@ -69,5 +69,15 @@ final class TreeTest extends TestCase
         $this->expectOutputString('5 3 7');
         $tree->traverse('preorder');
     }
+
+    public function testTreePostorderTraverse(): void
+    {
+        $tree = new Bst\Tree();
+        $tree->insert(5);
+        $tree->insert(3);
+        $tree->insert(7);
+        $this->expectOutputString('3 7 5');
+        $tree->traverse('postorder');
+    }
 }
 
