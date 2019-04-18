@@ -79,5 +79,24 @@ final class TreeTest extends TestCase
         $this->expectOutputString('3 7 5');
         $tree->traverse('postorder');
     }
+
+    public function testTreeSearch(): void
+    {
+        $tree = new Bst\Tree();
+        $tree->insert(5);
+        $tree->insert(3);
+        $tree->insert(7);
+        $this->assertEquals($tree->search(5)->data, 5);
+    }
+
+    public function testTreeSearchFalse(): void
+    {
+        $tree = new Bst\Tree();
+        $tree->insert(5);
+        $tree->insert(3);
+        $tree->insert(7);
+        $this->assertEquals($tree->search(9), false);
+    }
+
 }
 
