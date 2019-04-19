@@ -97,6 +97,4 @@ final class TreeTest extends TestCase
         $tree->insert(7);
         $this->assertEquals($tree->search(9), false);
     }
-
 }
-

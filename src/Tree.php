@@ -94,27 +94,28 @@ class Tree
 
     private function preorder($node) : void
     {
-        echo $node . " ";
+        echo $node;
 
         if ($node->left) {
-            $this->inorder($node->left);
+            echo " ";
+            $this->preorder($node->left);
         }
 
         if ($node->right) {
             echo " ";
-            $this->inorder($node->right);
+            $this->preorder($node->right);
         }
     }
 
     private function postorder($node) : void
     {
         if ($node->left) {
-            $this->inorder($node->left);
+            $this->postorder($node->left);
             echo " ";
         }
 
         if ($node->right) {
-            $this->inorder($node->right);
+            $this->postorder($node->right);
             echo " ";
         }
 
