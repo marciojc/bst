@@ -35,17 +35,23 @@ class Tree
 
     public function traverse($method = 'inorder') : void
     {
+        $node = $this->root;
+
+        if ($node === null) {
+            return;
+        }
+
         switch ($method) {
             case 'inorder':
-                $this->inorder($this->root);
+                $this->inorder($node);
                 break;
 
             case 'postorder':
-                $this->postorder($this->root);
+                $this->postorder($node);
                 break;
 
             case 'preorder':
-                $this->preorder($this->root);
+                $this->preorder($node);
                 break;
 
             default:
@@ -62,6 +68,22 @@ class Tree
     public function search($data)
     {
         return $this->searchByKey($data, $this->root);
+    }
+
+    /**
+     * Delete a new item from the tree
+     *
+     * @param int $data
+     */
+    public function delete($data)
+    {
+        $node = $this->root;
+
+        if ($node !== null) {
+            $this->deleteNode($node, $data);
+        }
+
+        return $this;
     }
 
     private function insertNode(&$root, $node)
@@ -128,7 +150,7 @@ class Tree
      * @param Node $node
      * @return FALSE or Node
      */
-    protected function searchByKey($data, &$node)
+    private function searchByKey($data, &$node)
     {
         if ($node == null) {
             return false;
@@ -141,5 +163,37 @@ class Tree
         } else {
             return $this->searchByKey($data, $node->right);
         }
+    }
+
+    private function deleteNode(&$node, $data)
+    {
+        if ($data < $node->data) {
+            $node->left = $this->deleteNode($node->left, $data);
+        } else if ($data > $node->data) {
+            $node->right = $this->deleteNode($node->right, $data);
+        } else {
+            if ($node->left === null) {
+                return $node->right;
+            } else if ($node->right === null) {
+                return $node->left;
+            }
+
+            $temp = $this->minValueNode($node->right);
+            $node->data = $temp->data;
+            $node->right = $this->deleteNode($node->right, $temp->data);
+        }
+
+        return $node;
+    }
+
+    private function minValueNode($node) : Node
+    {
+        $current = $node;
+
+        while ($current->left !== null) {
+            $current = $current->left;
+        }
+
+        return $current;
     }
 }
