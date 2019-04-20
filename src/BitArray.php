@@ -17,12 +17,10 @@ class BitArray
      */
     public function insert($value)
     {
-        $node = new Node($data);
-
         if (empty($this->data)) {
             $this->data[] = $value;
         } else {
-            $this->insertData($node, 0);
+            $this->insertData($value, 0);
         }
 
         return $this;
@@ -30,13 +28,12 @@ class BitArray
 
     private function insertData($value, $i)
     {
-        $n = 2 * $i;
-        if (empty($this->data[$n])) {
-            $this->data[$n] = $value;
-        } else if ($value < $this->data[$n + 1]) {
-            $this->insertData($value, $n + 1);
-        } else if ($value > $this->data[$n + 2]) {
-            $this->insertData($value, $n + 2);
+        if (empty($this->data[$i])) {
+            $this->data[$i] = $value;
+        } else if ($value < $this->data[$i]) {
+            $this->insertData($value, 2 * $i + 1);
+        } else if ($value > $this->data[$i]) {
+            $this->insertData($value, 2 * $i + 2);
         }
     }
 }
