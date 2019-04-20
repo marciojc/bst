@@ -97,4 +97,19 @@ final class TreeTest extends TestCase
         $tree->insert(7);
         $this->assertEquals($tree->search(9), false);
     }
+
+    public function testTreeDetele(): void
+    {
+        $tree = new Bst\Tree();
+        $tree->insert(50);
+        $tree->insert(30);
+        $tree->insert(20);
+        $tree->insert(40);
+        $tree->insert(70);
+        $tree->insert(60);
+        $tree->insert(80);
+        $tree->delete(50);
+        $this->expectOutputString('20 30 40 60 70 80');
+        $tree->traverse();
+    }
 }
