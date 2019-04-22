@@ -42,4 +42,13 @@ final class BitArrayTest extends TestCase
         $ba->insert(7);
         $this->assertEquals($ba->data, array(5, 3, 7));
     }
+
+    public function testBitArraySearch(): void
+    {
+        $ba = new Bst\BitArray();
+        $ba->insert(5);
+        $ba->insert(3);
+        $ba->insert(7);
+        $this->assertEquals($ba->search(7), 2);
+    }
 }
