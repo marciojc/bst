@@ -26,6 +26,17 @@ class BitArray
         return $this;
     }
 
+    /**
+     * Search by item data
+     *
+     * @param int $data
+     * @return int or FALSE
+     */
+    public function search($data)
+    {
+        return $this->searchData($data, 0);
+    }
+
     private function insertData($value, $i)
     {
         if (empty($this->data[$i])) {
@@ -34,6 +45,17 @@ class BitArray
             $this->insertData($value, 2 * $i + 1);
         } else if ($value > $this->data[$i]) {
             $this->insertData($value, 2 * $i + 2);
+        }
+    }
+
+    private function searchData($value, $i)
+    {
+        if ($this->data[$i] === $value) {
+            return $i;
+        } else if ($value < $this->data[$i]) {
+            return $this->searchData($value, 2 * $i + 1);
+        } else if ($value > $this->data[$i]) {
+            return $this->searchData($value, 2 * $i + 2);
         }
     }
 }
